@@ -1,3 +1,7 @@
+gsap.registerPlugin(ScrollTrigger);
+
+const colors = {"Black":"#08090a","Chrysler blue":"#5711e4","Platinum":"#eaeaea","Periwinkle":"#cbc5ea","Blush":"#d55672"}
+
 function startLoader(){
     let counterElement = document.querySelector(".counter");
     let currentValue = 0;
@@ -106,5 +110,123 @@ gsap.to(".container", 2, {
     scale: 1,
     ease: "power4.inOut",
     delay: 7.5,
-    background: "blue",
+    "background-color": colors.Black,
 })
+
+// gsap.to(".greetings", 1, {
+//     opacity:0,
+//     display:"none",
+//     "margin-bottom": "5rem",
+//     ease: "power4.inOut",
+//     delay: 9,
+// })
+
+gsap.to(".container", 1, {
+    opacity: "0",
+    "z-index":"-222",
+    ease: "power4.inOut",
+    delay: 9.5,
+})
+
+gsap.to(".contain", .5, {
+    display: "block",
+    ease: "power4.inOut",
+    delay: 8,
+    onComplete: someFunction,
+})
+
+
+gsap.to(".contain", .5, {
+    opacity:"1",
+    ease: "power4.inOut",
+    delay: 9,
+})
+
+
+function someFunction(){
+    const footer = document.querySelector(".footer");
+    const lastCard = document.querySelector(".card.scroll");
+    const pinnedSections = gsap.utils.toArray(".pinned");
+
+    pinnedSections.forEach((section, index, sections) => {
+        let img = section.querySelector(".img");
+        console.log(section)
+        console.log(img)
+        let nextSection = sections[index + 1] || lastCard;
+        let endScalePoint = `top+=${nextSection.offsetTop - section.offsetTop} top`;
+        console.log(endScalePoint);
+        gsap.to(section, {
+            scrollTrigger: {
+                trigger: section,
+                start: "top top",
+                end: 
+                    index == sections.length
+                        ? `+=${lastCard.offsetHeight / 2}`
+                        : footer.offsetTop - window.innerHeight,
+                pin: true,
+                pinSpacing: false,
+                scrub: 1,
+            }
+        })
+
+        gsap.fromTo(img, {scale: 1}, {
+            scale: 0.5,
+            ease: "none",
+            scrollTrigger: {
+                trigger: section,
+                start: "top top",
+                end: endScalePoint,
+                scrub: 1,
+            }
+        })
+    })
+}
+
+
+let gret = document.querySelector("#gret");
+console.log(gret);
+gret.addEventListener('animationend', () => {
+    console.log('Animation ended');
+  });
+
+// Content Section
+
+
+
+// document.addEventListener("DOMContentLoaded", function(){
+//     const footer = document.querySelector(".footer");
+//     const lastCard = document.querySelector(".card.scroll");
+//     const pinnedSections = gsap.utils.toArray(".pinned");
+
+//     pinnedSections.forEach((section, index, sections) => {
+//         let img = section.querySelector(".img");
+//         console.log(section)
+//         let nextSection = sections[index + 1] || lastCard;
+//         let endScalePoint = `top+=${nextSection.offsetTop - section.offsetTop} top`;
+//         console.log(endScalePoint);
+//         gsap.to(section, {
+//             scrollTrigger: {
+//                 trigger: section,
+//                 start: "top top",
+//                 end: 
+//                     index == sections.length
+//                         ? `+=${lastCard.offsetHeight / 2}`
+//                         : footer.offsetTop - window.innerHeight,
+//                 pin: true,
+//                 pinSpacing: false,
+//                 scrub: 1,
+//             }
+//         })
+
+//         gsap.fromTo(img, {scale: 1}, {
+//             scale: 0.5,
+//             ease: "none",
+//             scrollTrigger: {
+//                 trigger: section,
+//                 start: "top top",
+//                 end: endScalePoint,
+//                 scrub: 1,
+//             }
+//         })
+//     })
+// })
