@@ -6,6 +6,8 @@
     <title>Hello, world!</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="description" content="" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
@@ -30,45 +32,82 @@
     </div>
 
     <div class="contain">
+        
         <div class="logo">
-            <a href="#">Flow Canvas</a>
+            <div id="videoplay">
+                <a href="#">😒Video play koro 😒</a>
+            </div>
+            
+
+            <div id="scrollkoro">
+                <a href="#">gaan ta mon diye shune scroll koro</a>
+                <div class="scroll"></div>
+            </div>
+           
         </div>
 
         <section class="hero pinned">
-            <h1>Hello World</h1>
+            <!-- <h1>Hello World</h1> -->
+                <video id="video" loop controls>
+                    <source src="assets/chargelight.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+            
+            
         </section>
 
         <section class="card pinned">
-            <div class="img"><img src="./assets/img1.jpg" alt=""/></div>
+            <div class="img">
+                <img src="./assets/img1.jpeg" alt=""/>
+                <div class="after">This is some content</div>
+            </div>
+            
         </section>
 
         <section class="card pinned">
-            <div class="img"><img src="./assets/img2.jpg" alt=""/></div>
+            <div class="img">
+                <img src="./assets/img2.jpg" alt=""/>
+                <div class="after">This is some content</div>
+            </div>
         </section>
         
         <section class="card pinned">
-            <div class="img"><img src="./assets/img3.jpg" alt=""/></div>
+            <div class="img">
+                <img src="./assets/img3.jpg" alt=""/>
+                <div class="after">This is some content</div>
+            </div>
         </section>
 
         <section class="card pinned">
-            <div class="img"><img src="./assets/img4.jpg" alt=""/></div>
+            <div class="img">
+                <img src="./assets/img4.jpg" alt=""/>
+                <div class="after">This is some content</div>
+            </div>
         </section>
 
         <section class="card pinned">
-            <div class="img"><img src="./assets/img5.png" alt=""/></div>
+            <div class="img">
+                <img src="./assets/img5.png" alt=""/>
+                <div class="after">This is some content</div>
+            </div>
         </section>
 
         <section class="card scroll">
-            <div class="img"><img src="./assets/img6.png" alt=""/></div>
+            <div class="img">
+                <img src="./assets/img6.png" alt=""/>
+                <div class="after">This is some content</div>
+            </div>
         </section>
 
         <section class="footer">
-            <h1>after</h1>
+            <h1>after, <span>click koro</span></h1>
+            
         </section>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/blotter.min.js"></script>
     <script src="app.js"></script>
 </body>
 

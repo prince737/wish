@@ -1,19 +1,18 @@
 gsap.registerPlugin(ScrollTrigger);
 
-const colors = {"Black":"#08090a","Chrysler blue":"#5711e4","Platinum":"#eaeaea","Periwinkle":"#cbc5ea","Blush":"#d55672"}
+const colors = { "Black": "#08090a", "Chrysler blue": "#5711e4", "Platinum": "#eaeaea", "Periwinkle": "#cbc5ea", "Blush": "#d55672" }
 
-function startLoader(){
+function startLoader() {
     let counterElement = document.querySelector(".counter");
     let currentValue = 0;
 
-    function updateCounter(){
-        if (currentValue==100){
+    function updateCounter() {
+        if (currentValue == 100) {
             return;
         }
 
-        currentValue += Math.floor(Math.random() * 10) +1;
-        if (currentValue > 100)
-        {
+        currentValue += Math.floor(Math.random() * 10) + 1;
+        if (currentValue > 100) {
             currentValue = 100;
         }
 
@@ -66,12 +65,12 @@ gsap.to(".block", 0.75, {
 })
 
 gsap.fromTo(".container", {
-        duration: 2,
-        left: "100%",
-        scale: 0.5,
-        ease: "power4.inOut",
-        delay: 4,
-    },
+    duration: 2,
+    left: "100%",
+    scale: 0.5,
+    ease: "power4.inOut",
+    delay: 4,
+},
     {
         duration: 2,
         left: "50%",
@@ -123,7 +122,7 @@ gsap.to(".container", 2, {
 
 gsap.to(".container", 1, {
     opacity: "0",
-    "z-index":"-222",
+    "z-index": "-222",
     ease: "power4.inOut",
     delay: 9.5,
 })
@@ -137,13 +136,13 @@ gsap.to(".contain", .5, {
 
 
 gsap.to(".contain", .5, {
-    opacity:"1",
+    opacity: "1",
     ease: "power4.inOut",
     delay: 9,
 })
 
 
-function someFunction(){
+function someFunction() {
     const footer = document.querySelector(".footer");
     const lastCard = document.querySelector(".card.scroll");
     const pinnedSections = gsap.utils.toArray(".pinned");
@@ -159,7 +158,7 @@ function someFunction(){
             scrollTrigger: {
                 trigger: section,
                 start: "top top",
-                end: 
+                end:
                     index == sections.length
                         ? `+=${lastCard.offsetHeight / 2}`
                         : footer.offsetTop - window.innerHeight,
@@ -169,7 +168,7 @@ function someFunction(){
             }
         })
 
-        gsap.fromTo(img, {scale: 1}, {
+        gsap.fromTo(img, { scale: 1 }, {
             scale: 0.5,
             ease: "none",
             scrollTrigger: {
@@ -179,6 +178,24 @@ function someFunction(){
                 scrub: 1,
             }
         })
+
+        let video = document.getElementById("video");
+        ScrollTrigger.create({
+            trigger: document.body,
+            start: "-50px",
+            end: '+=450vh',
+            scrub: 1,
+            onUpdate: (self) => {
+                let op = self.progress;
+                video.style.opacity = 1 - op;
+            },
+            onEnter: () => video.play(),
+            onEnterBack: () => video.play(),
+            onLeave: () => video.pause(),
+            onLeaveBack: () => video.pause(),
+        });
+
+       
     })
 }
 
@@ -187,46 +204,17 @@ let gret = document.querySelector("#gret");
 console.log(gret);
 gret.addEventListener('animationend', () => {
     console.log('Animation ended');
-  });
-
-// Content Section
+});
 
 
+let video = document.getElementById("video");
+video.addEventListener("play", (event) => {
+    console.log("Video played")
+    console.log(event)
+    let scrollkoro = document.getElementById("scrollkoro");
+    let playkoro = document.getElementById("videoplay");
+    playkoro.style.display = "none"
+    scrollkoro.style.display = "flex"
 
-// document.addEventListener("DOMContentLoaded", function(){
-//     const footer = document.querySelector(".footer");
-//     const lastCard = document.querySelector(".card.scroll");
-//     const pinnedSections = gsap.utils.toArray(".pinned");
+});
 
-//     pinnedSections.forEach((section, index, sections) => {
-//         let img = section.querySelector(".img");
-//         console.log(section)
-//         let nextSection = sections[index + 1] || lastCard;
-//         let endScalePoint = `top+=${nextSection.offsetTop - section.offsetTop} top`;
-//         console.log(endScalePoint);
-//         gsap.to(section, {
-//             scrollTrigger: {
-//                 trigger: section,
-//                 start: "top top",
-//                 end: 
-//                     index == sections.length
-//                         ? `+=${lastCard.offsetHeight / 2}`
-//                         : footer.offsetTop - window.innerHeight,
-//                 pin: true,
-//                 pinSpacing: false,
-//                 scrub: 1,
-//             }
-//         })
-
-//         gsap.fromTo(img, {scale: 1}, {
-//             scale: 0.5,
-//             ease: "none",
-//             scrollTrigger: {
-//                 trigger: section,
-//                 start: "top top",
-//                 end: endScalePoint,
-//                 scrub: 1,
-//             }
-//         })
-//     })
-// })
