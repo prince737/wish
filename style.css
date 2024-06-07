@@ -164,7 +164,7 @@ img {
     align-items: center;
 }
 
-.scroll {
+.scrollindicator {
     margin-left: 10px;
     width: 2rem;
     height: 2rem;
@@ -175,7 +175,7 @@ img {
     -webkit-animation: down 1.5s infinite;
 }
 
-.scroll::before {
+.scrollindicator::before {
     content: "";
     position: absolute;
     top: .5rem;
