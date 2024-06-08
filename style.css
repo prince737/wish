@@ -222,13 +222,13 @@ img {
     color: var(--platinum);
 }
 
-#videoplay{
+#videoplay {
     display: flex;
-    align-items: center; 
+    align-items: center;
 }
 
-#scrollkoro{
-    display:none;
+#scrollkoro {
+    display: none;
     align-items: center;
 }
 
@@ -282,6 +282,7 @@ section {
     align-items: center;
     color: var(--platinum);
     background-color: #242424;
+    margin-top: 2rem;
 }
 
 .footer h1 {
@@ -338,6 +339,57 @@ section {
     text-shadow: -2px 0 #ff00c1;
     clip: rect(44px, 450px, 56px, 0);
     animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+#birthday {
+    height: 100vh;
+    width: 100vw;
+    background-color: #242424;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#birthday-message {
+    display: flex;
+    font-size: 7vw;
+    color: transparent;
+    scale: 0;
+    opacity: 0;
+    position: absolute;
+    z-index: 999999999;
+}
+
+#birthday-message span {
+    color: #fff;
+    animation: box 3s linear infinite;
+    animation-delay: calc(0.1s * var(--i));
+    font-family: "Pacifico", cursive;
+}
+
+@keyframes box {
+    0% {
+        color: #fff;
+        filter: hue-rotate(0deg);
+        text-shadow: 0 0 5px #2658e2, 0 0 10px #2658e2, 0 0 20px #2658e2,
+            0 0 40px #2658e2, 0 0 60px #2658e2, 0 0 100px #2658e2, 0 0 150px #2658e2,
+            0 0 200px #2658e2;
+    }
+
+    30%,
+    70% {
+        color: #fff;
+        filter: hue-rotate(360deg);
+        text-shadow: 0 0 5px #2658e2, 0 0 10px #2658e2, 0 0 20px #2658e2,
+            0 0 40px #2658e2, 0 0 60px #2658e2, 0 0 100px #2658e2;
+    }
+
+    100% {
+        color: transparent;
+        text-shadow: none;
+        filter: hue-rotate(0deg);
+    }
 }
 
 

@@ -200,13 +200,6 @@ function someFunction() {
 }
 
 
-let gret = document.querySelector("#gret");
-console.log(gret);
-gret.addEventListener('animationend', () => {
-    console.log('Animation ended');
-});
-
-
 let video = document.getElementById("video");
 video.addEventListener("play", (event) => {
     console.log("Video played")
@@ -217,4 +210,54 @@ video.addEventListener("play", (event) => {
     scrollkoro.style.display = "flex"
 
 });
+
+let clicker = document.querySelector("#birthday-clicker");
+clicker.addEventListener('click', () => {
+    gsap.to(".footer-content", 1, {
+        opacity: "0",
+        display: "none",
+        "margin-top": "5rem",
+        ease: "power4.inOut",
+    })
+
+    gsap.to("#birthday", 1, {
+        "delay": 1,
+        "display": "flex",
+        ease: "power4.inOut",
+    })
+
+    
+});
+
+var animation = bodymovin.loadAnimation({
+    wrapper: document.getElementById('birthday'), // Required
+    path: 'https://lottie.host/23c59fa2-2ccc-41ba-8317-76f55d221fdc/p7WxPqoMfW.json', // Required
+    animType: 'svg', // Required
+    loop: false, // Optional
+    autoplay: false, // Optional
+})
+animation.setSpeed(0.6)
+
+var birthdayMessage = document.getElementById('birthday-message');
+let footerContent = document.querySelector(".footer-content");
+let done = false;
+animation.addEventListener("enterFrame", function(event){
+    if (event.currentTime > 40 && !done && footerContent.style.display =="none"){
+        done = true
+        gsap.to("#birthday-message", 1, {
+            "opacity": 1,
+            "scale": 1,
+            ease: "power4.inOut",
+        })
+    }
+})
+
+
+var targetNode = document.getElementById('birthday');
+var observer = new MutationObserver(function(){
+    if(targetNode.style.display != 'none'){
+        animation.goToAndPlay(0, true)
+    } 
+});
+observer.observe(targetNode, { attributes: true, childList: true });
 
