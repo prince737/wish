@@ -195,7 +195,7 @@ function someFunction() {
             onLeaveBack: () => video.pause(),
         });
 
-       
+
     })
 }
 
@@ -226,7 +226,7 @@ clicker.addEventListener('click', () => {
         ease: "power4.inOut",
     })
 
-    
+
 });
 
 var animation = bodymovin.loadAnimation({
@@ -238,13 +238,31 @@ var animation = bodymovin.loadAnimation({
 })
 animation.setSpeed(0.6)
 
+var balloonsAnim1 = bodymovin.loadAnimation({
+    wrapper: document.getElementById('balloons-contain1'), // Required
+    path: 'https://lottie.host/324fc2d8-8372-4441-b4fa-7d7d1a767219/qlHEVH8a5A.json', // Required
+    animType: 'svg', // Required
+    loop: true, // Optional
+    autoplay: false, // Optional
+})
+balloonsAnim1.setSpeed(0.6)
+
+var balloonsAnim2 = bodymovin.loadAnimation({
+    wrapper: document.getElementById('balloons-contain2'), // Required
+    path: 'https://lottie.host/324fc2d8-8372-4441-b4fa-7d7d1a767219/qlHEVH8a5A.json', // Required
+    animType: 'svg', // Required
+    loop: true, // Optional
+    autoplay: false, // Optional
+})
+balloonsAnim2.setSpeed(0.6)
+
 var birthdayMessage = document.getElementById('birthday-message');
 let footerContent = document.querySelector(".footer-content");
 let done = false;
-animation.addEventListener("enterFrame", function(event){
-    if (event.currentTime > 40 && !done && footerContent.style.display =="none"){
+animation.addEventListener("enterFrame", function (event) {
+    if (event.currentTime > 40 && !done && footerContent.style.display == "none") {
         done = true
-        gsap.to("#birthday-message", 1, {
+        gsap.to("#birthday-message", 2, {
             "opacity": 1,
             "scale": 1,
             ease: "power4.inOut",
@@ -253,11 +271,16 @@ animation.addEventListener("enterFrame", function(event){
 })
 
 
+
+
 var targetNode = document.getElementById('birthday');
-var observer = new MutationObserver(function(){
-    if(targetNode.style.display != 'none'){
+var observer = new MutationObserver(function () {
+    if (targetNode.style.display != 'none') {
         animation.goToAndPlay(0, true)
-    } 
+        balloonsAnim1.goToAndPlay(0, true)
+        balloonsAnim2.goToAndPlay(0, true)
+    }
 });
 observer.observe(targetNode, { attributes: true, childList: true });
+
 
