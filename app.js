@@ -149,11 +149,8 @@ function someFunction() {
 
     pinnedSections.forEach((section, index, sections) => {
         let img = section.querySelector(".img");
-        console.log(section)
-        console.log(img)
         let nextSection = sections[index + 1] || lastCard;
         let endScalePoint = `top+=${nextSection.offsetTop - section.offsetTop} top`;
-        console.log(endScalePoint);
         gsap.to(section, {
             scrollTrigger: {
                 trigger: section,
@@ -202,8 +199,6 @@ function someFunction() {
 
 let video = document.getElementById("video");
 video.addEventListener("play", (event) => {
-    console.log("Video played")
-    console.log(event)
     let scrollkoro = document.getElementById("scrollkoro");
     let playkoro = document.getElementById("videoplay");
     playkoro.style.display = "none"
@@ -267,9 +262,11 @@ animation.addEventListener("enterFrame", function (event) {
             "scale": 1,
             ease: "power4.inOut",
         })
+        for(let i = 0; i < count; i++){
+            createUnit()
+        }
     }
 })
-
 
 
 
@@ -284,3 +281,148 @@ var observer = new MutationObserver(function () {
 observer.observe(targetNode, { attributes: true, childList: true });
 
 
+var firefly =  document.getElementById("test");
+let count = 200;
+let w, h;
+
+function random(min, max){
+    return gsap.utils.random(min, max);
+}
+
+function createUnit(){
+    var unit = document.createElement("i");
+    w = window.innerWidth;
+    h = window.innerHeight;
+    unit.classList.add("fa", "fa-heart");
+    firefly.appendChild(unit)
+
+    var a =  random(h, w)
+    var b =  random(h, w)
+    gsap.set(unit, {
+        x: random(0,h*1.5),
+        y: random(0,w*1.5),
+        scale: random(0.5, 1),
+        opacity: 0
+    })
+    gsap.to(unit, {
+        x: "+=" + random(-w/2, w/2),
+        y: "+=" + random(-h/2,h/2),
+        duration: random(20, 40),
+        ease: Linear.easeNone,
+        yoyo: true,
+        repeat: -1
+    })
+
+    gsap.to(unit, {
+        opacity: .5,
+        repeat: -1,
+        yoyo: true,
+        duration: random(2,3),
+        delay: random(0,2),
+        ease: Power2.easeInOut,
+        // onComplete: function(){
+        //     unit.parentNode.removeChild(unit)
+        //     createUnit();
+        // }
+    })
+}
+
+
+
+
+
+// const canvas = document.querySelector("canvas")
+// const ctx = canvas.getContext("2d");
+
+// let mouseMoved = false;
+
+// const pointer = {
+//     x: 0.5 * window.innerWidth,
+//     y: 0.5 * window.innerHeight
+// }
+
+// const params = {
+//     pointsNumber: 40,
+//     widthFactor: 0,
+//     mouseThreshold: 0.5,
+//     spring: 0.25,
+//     friction: 0.5
+// }
+
+// const trail = new Array(params.pointsNumber);
+// for(let i = 0; i < params.pointsNumber; i++){
+//     trail[i] = {
+//         x: pointer.x,
+//         y: pointer.y,
+//         dx: 0,
+//         dy: 0
+//     }
+// }
+
+// window.addEventListener("click", (e) => {
+//     updateMousePosition(e.pageX, e.pageY);
+// });
+// window.addEventListener("mousemove", (e) => {
+//     mouseMoved = true;
+//     updateMousePosition(e.pageX, e.pageY)
+// })
+
+// window.addEventListener("touchmove", (e) => {
+//     mouseMoved = true;
+//     updateMousePosition(e.targetTouches[0].pageX, e.targetTouches[0].pageY)
+// })
+
+// function updateMousePosition(eX, eY){
+//     pointer.x = eX;
+//     pointer.y = eY
+// }
+
+// setupCanvas();
+// update(0);
+// window.addEventListener("resize", setupCanvas)
+
+// function update(t){
+//     if(!mouseMoved){
+//         pointer.x = (0.5+0.3 * Math.cos(0.002 * t) * Math.sin(0.005 * t)) * window.innerWidth;
+//         pointer.y = (0.5 + 0.2 * Math.cos(0.005 * t) + 0.1 * Math.cos(0.01 * t)) * window.innerHeight
+//     }
+//     ctx.clearRect(0, 0, canvas.width, canvas.height);
+//     trail.forEach((p, pIdx) => {
+//         const prev = pIdx === 0? pointer : trail[pIdx - 1];
+//         const spring = pIdx === 0? 0.4 * params.spring : params.spring;
+
+//         p.dx += (prev.x = p.x) * spring;
+//         p.dy += (prev.y - p.y) * spring;
+//         p.dx *= params.friction;
+//         p.dy *= params.friction;
+//         p.x += p.dx;
+//         p.y += p.dy;
+//     });
+
+//     var gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+//     gradient.addColorStop(0, "rgba(160, 93, 134, 1")
+//     gradient.addColorStop(1, "rgba(57, 34, 115, 1")
+
+//     ctx.strokeStyle = gradient;
+//     ctx.lineCap = "round";
+//     ctx.beginPath();
+//     ctx.moveTo(trail[0].x, trail[0].y)
+    
+//     for (let i = 0; i < trail.length - 1; i++) {
+//        const xc = 0.5 * (trail[i].x + trail[i + 1].x)
+//        const yc = 0.5 * (trail[i].y + trail[i + 1].y)
+//         ctx.quadraticCurveTo(trail[i].x, trail[i].y, xc, yc);
+//         ctx.lineWidth = params.widthFactor * (params.pointsNumber - i);
+//         ctx.stroke();
+//     }
+
+//     ctx.lineTo(trail[trail.length - 1].x, trail[trail.length - 1].y);
+//     ctx.stroke();
+
+//     window.requestAnimationFrame(update);
+// }
+
+// function setupCanvas(){
+//     canvas.width = window.innerWidth;
+//     canvas.height = window.innerHeight;
+// }
