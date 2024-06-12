@@ -164,7 +164,6 @@ function someFunction() {
                 scrub: 1,
             }
         })
-
         gsap.fromTo(img, { scale: 1 }, {
             scale: 0.5,
             ease: "none",
@@ -191,10 +190,31 @@ function someFunction() {
             onLeave: () => video.pause(),
             onLeaveBack: () => video.pause(),
         });
-
-
     })
 }
+
+let cards = document.querySelectorAll(".card");
+cards.forEach(card => {
+    console.log(card)
+    let heading = card.querySelector(".main-content");
+    console.log(heading)
+    if(heading != null){
+        ScrollTrigger.create({
+            trigger: card,
+            start: "0vh",
+            end: '+=500vh',
+            scrub: 1,
+            onUpdate: (self) => {
+                heading.style.setProperty("--rotation", `${self.progress * 30}deg`);
+            },
+            // onEnter: () => video.play(),
+            // onEnterBack: () => video.play(),
+            // onLeave: () => video.pause(),
+            // onLeaveBack: () => video.pause(),
+        });
+    }
+   
+});
 
 
 let video = document.getElementById("video");
@@ -326,6 +346,24 @@ function createUnit(){
         // }
     })
 }
+
+// let heading = document.querySelector(".main-content");
+// window.addEventListener("scroll", function(){
+//     // console.log(window.scrollY)
+//     // console.log( document.documentElement.scrollTop)
+
+//     // console.log("scrollheight: ", document.documentElement.scrollHeight)
+//     // console.log("client height: ", document.documentElement.clientHeight)
+//     let scrollTop = window.scrollY || document.documentElement.scrollTop;
+//     let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+//     console.log()
+//     // console.log("scrollTop: ",scrollTop)
+//     // console.log("scrollHeight: ",scrollHeight)
+//     let scrollPosition = ((scrollTop / document.documentElement.clientHeight)) * 20 ;
+//     // console.log("scrollposotion:", scrollPosition)
+//     heading.style.setProperty("--rotation", `${scrollPosition}deg`);
+// })
 
 
 
