@@ -267,12 +267,13 @@ section {
     height: 100%;
     display: flex;
     color: #FFF;
-    background: rgb(21, 9, 245);
+    /* background: rgb(21, 9, 245); */
     align-items: center;
     justify-content: center;
     font-size: 7rem;
     font-family: "saol Display";
 }
+
 
 .after h1{
     color: var(--platinum);
@@ -282,14 +283,98 @@ section {
     text-align: center;
 }
 
+
+.first-h1{
+    width: 60%;
+    
+}
+
+.after1{
+    background-color: rgb(21, 9, 245);
+}
+
+.first-h1:before{
+    background-color: rgb(21, 9, 245);
+    clip-path: circle(30% at 50% 50%)!important;
+}
+
+.second-h1{
+    font-size: 5rem!important;
+    color: var(--black)!important;
+}
+
+.after2{
+    background-color: var(--lilac)!important;
+    padding: 4rem;
+}
+
+.second-h1:before{
+    background-color: var(--lilac);
+}
+
+.third-h1{
+    font-size: 5rem!important;
+    color: var(--black)!important;
+}
+
+.after3{
+    background-color: var(--blush)!important;
+    padding: 6rem;
+}
+
+.third-h1:before{
+    background-color: var(--blush);
+}
+
+.fourth-h1{
+    font-size: 4rem!important;
+    color: var(--black)!important;
+}
+
+.after4{
+    background-color: var(--yellow)!important;
+    padding: 6rem;
+}
+
+.fourth-h1:before{
+    background-color: var(--yellow);
+}
+
+.fifth-h1{
+    font-size: 6rem!important;
+    color: var(--black)!important;
+}
+
+.after5{
+    background-color: var(--periwinkle)!important;
+    padding: 5rem;
+}
+
+.fifth-h1:before{
+    background-color: var(--periwinkle);
+}
+
+.sixth-h1{
+    font-size: 6rem!important;
+}
+
+.after6{
+    background-color: var(--chrysler-blue)!important;
+    padding: 5rem;
+}
+
+.sixth-h1:before{
+    background-color: var(--chrysler-blue);
+}
+
+
 .after h1:before{
     position: absolute;
    content: attr(data-before);
    top: 0;
    left: 0;
-   clip-path: circle(30% at 50% 50%);
+   clip-path: circle(40% at 50% 50%);
    transform: rotate(var(--rotation, 0));
-   background-color: rgb(21, 9, 245);
 }
 
 .footer {
@@ -302,13 +387,16 @@ section {
     background-color: var(--black);
     margin-top: 2rem;
     overflow: hidden;
+    text-align: left;
+    padding: 5rem;
 }
 
 .footer h1 {
     font-size: 10rem;
     font-weight: 400px;
     letter-spacing: 2px;
-    font-size: 3rem;
+    font-size: 5rem;
+    color: var(--periwinkle);
 }
 
 .footer h1 span {
@@ -329,7 +417,7 @@ section {
 }
 
 .footer h1 span::before {
-    content: "click koro";
+    content: "ekhane click koro";
     position: absolute;
     top: 0;
     left: 0;
@@ -339,7 +427,7 @@ section {
 }
 
 .footer h1 span::after {
-    content: "click koro";
+    content: "ekhane click koro";
     position: absolute;
     top: 0;
     left: 0;
