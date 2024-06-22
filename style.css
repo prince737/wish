@@ -657,6 +657,16 @@ section {
         left: 50%;
         transform: translateX(-50%);
     }
+
+    .footer{
+        padding: 0;
+    }
+
+    #birthday-message {
+        font-size: 3rem;
+        margin-bottom: 7rem;
+    }
+
     .footer h1{
         font-size: 2rem;
     }
