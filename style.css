@@ -650,6 +650,89 @@ section {
     margin-left: -40px;
 }
 
+
+
+@media only screen and (max-width: 600px) {
+    .circles{
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .footer h1{
+        font-size: 2rem;
+    }
+
+    .footer h1 span{
+        font-size: 2rem;
+    }
+
+    .hero video{
+        width: 90vw;
+    }
+
+    .logo{
+        width: 100%;
+    }
+
+    #videoplay{
+        width: 100%;
+    }
+
+    .logo a{
+        width: 100%;
+        text-align: center;
+    }
+
+    .scrollindicator{
+        margin-left: 0;
+    }
+
+    .scrollindicator::before{
+        left: .5rem;
+    }
+
+    .after h1{
+        font-size: 3rem;
+    }
+
+    .second-h1{
+        font-size: 2rem !important;
+    }
+
+    .after3{
+        padding: 1rem;
+    }
+
+    .third-h1{
+        font-size: 3rem !important;
+    }
+
+    .after4{
+        padding: 1rem;
+    }
+
+    .fourth-h1{
+        font-size:2rem !important;
+    }
+
+    .after5{
+        padding: 1.5rem;
+    }
+
+    .fifth-h1{
+        font-size: 2rem !important;
+    }
+
+    .after5{
+        padding: 1.5rem;
+    }
+
+    .sixth-h1{
+        font-size: 2rem !important;
+    }
+  }
+
+
+
 @-webkit-keyframes flash-1 {
 
     0%,
