@@ -469,11 +469,11 @@ section {
 
 .hat {
     position: absolute;
-    width: 100px;
+    width: 120px;
     height: fit-content;
-    right: -5px;
+    right: 3%;
     transform: rotate(10deg);
-    bottom: 240px;
+    bottom: 260px;
 }
 
 #birthday-message {
